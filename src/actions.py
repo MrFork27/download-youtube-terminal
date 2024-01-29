@@ -1,5 +1,5 @@
 import os
-from pytube import YouTube, extract
+from pytube import YouTube
 
 
 def print_help():
