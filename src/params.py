@@ -12,7 +12,7 @@ def get_param_action():
     HELP_PARAMS_LEN = 2
     HELP_PARAMS = ["-h", "--help"]
     URL_PARAMS_LEN = 3
-    URL_PARAMS = ["url"]
+    URL_PARAMS = ["-u", "--url"]
     param_action = -1
 
     try:

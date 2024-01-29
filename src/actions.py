@@ -3,14 +3,16 @@ from pytube import YouTube, extract
 
 
 def print_help():
-    usage_string = "usage: [-h] [url]\n\n"
+    usage_string = "usage: [-h] [-u URL]\n\n"
     info_string = "Command line application to download youtube video audios.\n\n"
-    positional_arguments_string = (
-        "positional arguments:\n url                 The Youtube video url\n\n"
+    url_param_info = (
+        "options:\n -u [URL], --url [URL]          Show this help message and exit"
     )
-    options_string = "options:\n -h, --help          Show this help message and exit"
+    help_param_info = (
+        "options:\n -h, --help                     Show this help message and exit"
+    )
 
-    print(usage_string + info_string + positional_arguments_string + options_string)
+    print(usage_string + info_string + url_param_info + help_param_info)
 
 
 def download_audio(url):
