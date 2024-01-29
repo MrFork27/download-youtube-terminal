@@ -1,41 +1,43 @@
+import enum
 import sys
 
 
-def check_params():
+class Params(enum.Enum):
+    ERROR = 0
+    HELP = 1
+    URL = 2
+
+
+def get_param_action():
     HELP_PARAMS_LEN = 2
     URL_PARAMS_LEN = 3
-    URL_PARAMS = ["url"]
+    param_action = -1
 
     try:
         if len(sys.argv) == HELP_PARAMS_LEN:
-            check_help()
+            check_help_param()
+            param_action = Params.HELP
         elif len(sys.argv) == URL_PARAMS_LEN:
-            if not sys.argv[1] in URL_PARAMS:
-                raise Exception("fatal: See '--help'.")
+            check_url_param()
+            param_action = Params.URL
         else:
             raise Exception("fatal: See '--help'.")
     except Exception as error:
         print(error)
+        param_action = Params.ERROR
+
+    return param_action
 
 
-def check_help():
+def check_help_param():
     HELP_PARAMS = ["-h", "--help"]
 
-    try:
-        if sys.argv[1] in HELP_PARAMS:
-            print_help()
-        else:
-            raise Exception("fatal: See '--help'.")
-    except Exception as error:
-        print(error)
+    if not sys.argv[1] in HELP_PARAMS:
+        raise Exception("fatal: See '--help'.")
 
 
-def print_help():
-    usage_string = "usage: [-h] [url]\n\n"
-    info_string = "Command line application to download youtube video audios.\n\n"
-    positional_arguments_string = (
-        "positional arguments:\n url                 The Youtube video url\n\n"
-    )
-    options_string = "options:\n -h, --help          Show this help message and exit"
+def check_url_param():
+    URL_PARAMS = ["url"]
 
-    print(usage_string + info_string + positional_arguments_string + options_string)
+    if not sys.argv[1] in URL_PARAMS:
+        raise Exception("fatal: See '--help'.")
