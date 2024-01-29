@@ -1,14 +1,14 @@
 import actions
 import sys
-from params import Params, get_param_action
+from params import ParamsType, get_param_action
 
 
 def main():
     ACTION = get_param_action()
 
-    if ACTION == Params.HELP:
+    if ACTION == ParamsType.HELP:
         actions.print_help()
-    elif ACTION == Params.URL:
+    elif ACTION == ParamsType.URL:
         actions.download_audio(sys.argv[2])
 
 
