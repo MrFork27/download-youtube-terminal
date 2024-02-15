@@ -31,3 +31,19 @@ def download_audio(url):
     except Exception as error:
         print(error.__class__)
         print(error)
+
+
+def download_video(url):
+    VIDEO_DIRECTORY = "./video/"
+    try:
+        yt = YouTube(url)
+        print(f"Downloading audio from {yt.title}")
+        video_streams = (
+            yt.streams.filter(progressive=True).order_by("resolution").desc().first()
+        )
+
+        video_streams.download(output_path=VIDEO_DIRECTORY)
+
+    except Exception as error:
+        print(error.__class__)
+        print(error)
