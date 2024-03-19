@@ -4,15 +4,22 @@ from pytube import YouTube
 
 def print_help():
     usage_string = "usage: [-h] [-u URL]\n\n"
-    info_string = "Command line application to download youtube video audios.\n\n"
-    url_param_info = (
-        "options:\n -u [URL], --url [URL]          Show this help message and exit"
-    )
+    info_string = "Command line application to download youtube video and audios.\n\n"
     help_param_info = (
-        "options:\n -h, --help                     Show this help message and exit"
+        "options:\n -h, --help                       Show this help message and exit"
     )
+    audio_param_info = (
+        "\n -a [URL], --audio [URL]          Download audio video and exit"
+    )
+    video_param_info = "\n -v [URL], --video [URL]          Download video and exit"
 
-    print(usage_string + info_string + url_param_info + help_param_info)
+    print(
+        usage_string
+        + info_string
+        + help_param_info
+        + audio_param_info
+        + video_param_info
+    )
 
 
 def download_audio(url):
