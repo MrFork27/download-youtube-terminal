@@ -166,3 +166,6 @@ cython_debug/
 music/
 # Video directory
 video/
+
+# Python environment
+downloadYoutubeTerminal/
